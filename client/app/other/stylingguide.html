@@ -1,0 +1,374 @@
+<div class="container">
+<h1 id="the-hack-reactor-style-guide" class="ng-scope">The Hack Reactor Style Guide</h1>
+
+<p class="ng-scope">The first thing anyone notices about your code is its style, so start prioritizing correct whitespace and other details when using the language. We've collected a list of reasonable choices into a style guide that you should adopt while you're here.</p>
+<p class="ng-scope">A few of these points are of critical importance to either your code's reliability or its legibility. Those points will be made first, followed by the less critical rules you should set for yourself. The style guidelines you adopt should address the following goals:</p>
+<ul class="ng-scope">
+<li>Readability for both junior and senior engineers<ul>
+<li>Your readers will be both new and experienced engineers, so strive for a balance in readability for both. You can expect your reader to investigate language devices they are not familiar with, but not every minification is an improvement, even if there are some very senior engineers who could figure out what you're trying to express.</li>
+</ul>
+</li>
+<li>Maintainability<ul>
+<li>Sometimes an especially terse or 'elegant' expression can complicate the process of reading, debugging, or refactoring. Remember that your code will be reread many months from now by people who have never seen it or have completely forgotten it.</li>
+</ul>
+</li>
+<li>Brevity<ul>
+<li>This is the least important priority, but it's still of some importance. Try to keep your code as short and clear as possible while adhering to the goals above.</li>
+</ul>
+</li>
+</ul>
+<hr class="ng-scope">
+<h1 id="important-style-issues" class="ng-scope">Important style issues</h1>
+<p class="ng-scope">The following are style guidelines that we expect you to follow, and our assessment of your code's quality will depend in part on adhering to them.</p>
+<h3 id="best-practices-for-your-development-workflow" class="ng-scope">Best Practices for your development workflow</h3>
+<p class="ng-scope">We recommend that students learn as much about efficient use of their tools as possible. It is not taught or required in the course, but these techniques are particularly useful to master.</p>
+<ul class="ng-scope">
+<li>Learn and use as many keyboard shortcuts as possible. Avoid touching the mouse whenever possible.</li>
+<li>Practice touch typing as much as possible (don't look at your hands, use all your fingers, and keep them resting on the home row).</li>
+<li>Operate programs in full screen mode. You can toggle between them more effectively by using <code>command</code>+<code>tab</code> and <code>command</code>+<code>~</code> than by using the mouse.</li>
+</ul>
+<h3 id="don-t-use-the-dangerous-stuff-til-we-get-there" class="ng-scope">Don't use the dangerous stuff til we get there</h3>
+<ul class="ng-scope">
+<li>Avoid any use of the keywords "this" or "new" before they are introduced in class. They almost definitely don't work the way you think, and it will be easiest to teach them to you if you haven't acquired a lot of confusing baggage first.</li>
+</ul>
+<h3 id="indentation" class="ng-scope">Indentation</h3>
+<p class="ng-scope">When writing any block of code that is logically subordinate to the line immediately before and after it, that block should be indented two spaces more than the surrounding lines</p>
+<ul class="ng-scope">
+<li>Do not put any tab characters anywhere in your code. You would do best to stop pressing the tab key entirely.</li>
+<li><p>Increase the indent level for all blocks by two extra spaces</p>
+<ul>
+<li><p>When a line opens a block, the next line starts 2 spaces further in than the line that opened</p>
+<pre><code class="lang-javascript">  <span class="comment">// good:</span>
+  <span class="keyword">if</span> (condition) {
+    action();
+  }
+
+  <span class="comment">// bad:</span>
+  <span class="keyword">if</span> (condition) {
+  action();
+  }
+</code></pre>
+</li>
+<li><p>When a line closes a block, that line starts at the same level as the line that opened the block</p>
+<pre><code class="lang-javascript">  <span class="comment">// good:</span>
+  <span class="keyword">if</span> (condition) {
+    action();
+  }
+
+  <span class="comment">// bad:</span>
+  <span class="keyword">if</span> (condition) {
+    action();
+    }
+</code></pre>
+</li>
+<li><p>No two lines should ever have more or less than 2 spaces difference in their indentation. Any number of mistakes in the above rules could lead to this, but one example would be:</p>
+<pre><code class="lang-javascript">  <span class="comment">// bad:</span>
+  transmogrify({
+    a: {
+      b: <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+      }
+  }});
+</code></pre>
+</li>
+<li><p>use sublime's arrow collapsing as a guide. do the collapsing lines seem like they should be 'contained' by the line with an arrow on it?</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="variable-names" class="ng-scope">Variable names</h3>
+<ul class="ng-scope">
+<li><p>A single descriptive word is best.</p>
+<pre><code class="lang-javascript">  <span class="comment">// good:</span>
+  <span class="keyword">var</span> animals = [<span class="string">'cat'</span>, <span class="string">'dog'</span>, <span class="string">'fish'</span>];
+
+  <span class="comment">// bad:</span>
+  <span class="keyword">var</span> targetInputs = [<span class="string">'cat'</span>, <span class="string">'dog'</span>, <span class="string">'fish'</span>];
+</code></pre>
+</li>
+<li><p>Collections such as arrays and maps should have plural noun variable names.</p>
+<pre><code class="lang-javascript">  <span class="comment">// good:</span>
+  <span class="keyword">var</span> animals = [<span class="string">'cat'</span>, <span class="string">'dog'</span>, <span class="string">'fish'</span>];
+
+  <span class="comment">// bad:</span>
+  <span class="keyword">var</span> animalList = [<span class="string">'cat'</span>, <span class="string">'dog'</span>, <span class="string">'fish'</span>];
+
+  <span class="comment">// bad:</span>
+  <span class="keyword">var</span> animal = [<span class="string">'cat'</span>, <span class="string">'dog'</span>, <span class="string">'fish'</span>];
+</code></pre>
+</li>
+<li><p>Name your variables after their purpose, not their structure</p>
+<pre><code class="lang-javascript">  <span class="comment">// good:</span>
+  <span class="keyword">var</span> animals = [<span class="string">'cat'</span>, <span class="string">'dog'</span>, <span class="string">'fish'</span>];
+
+  <span class="comment">// bad:</span>
+  <span class="keyword">var</span> array = [<span class="string">'cat'</span>, <span class="string">'dog'</span>, <span class="string">'fish'</span>];
+</code></pre>
+</li>
+</ul>
+<h3 id="language-constructs" class="ng-scope">Language constructs</h3>
+<ul class="ng-scope">
+<li><p>Do not use <code>for...in</code> statements with the intent of iterating over a list of numeric keys. Use a for-with-semicolons statement in stead.</p>
+<pre><code class="lang-javascript"><span class="comment">// good:</span>
+<span class="keyword">var</span> list = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]
+<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; list.length; i++) {
+  alert(list[i]);
+}
+
+<span class="comment">// bad:</span>
+<span class="keyword">var</span> list = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]
+<span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> list) {
+  alert(list[i]);
+}
+</code></pre>
+</li>
+<li><p>Never omit braces for statement blocks (although they are technically optional).</p>
+<pre><code class="lang-javascript">  <span class="comment">// good:</span>
+  <span class="keyword">for</span> (key <span class="keyword">in</span> object) {
+    alert(key);
+  }
+
+  <span class="comment">// bad:</span>
+  <span class="keyword">for</span> (key <span class="keyword">in</span> object)
+    alert(key);
+</code></pre>
+</li>
+<li><p>Always use <code>===</code> and <code>!==</code>, since <code>==</code> and <code>!=</code> will automatically convert types in ways you're unlikely to expect.</p>
+<pre><code class="lang-javascript">  <span class="comment">// good:</span>
+
+  <span class="comment">// this comparison evaluates to false, because the number zero is not the same as the empty string.</span>
+  <span class="keyword">if</span> (<span class="number">0</span> === <span class="string">''</span>) {
+    alert(<span class="string">'looks like they\'re equal'</span>);
+  }
+
+  <span class="comment">// bad:</span>
+
+  <span class="comment">// This comparison evaluates to true, because after type coercion, zero and the empty string are equal.</span>
+  <span class="keyword">if</span> (<span class="number">0</span> == <span class="string">''</span>) {
+    alert(<span class="string">'looks like they\'re equal'</span>);
+  }
+</code></pre>
+</li>
+<li><p>Avoid using function statements for the entire first half of the course. They introduce a slew of subtle new rules to how the language behaves, and without a clear benefit. Once you and all your peers are expert level in the second half, you can start to use the more (needlessly) complicated option if you like.</p>
+<pre><code class="lang-javascript">  <span class="comment">// good:</span>
+  <span class="keyword">var</span> go = <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>...};
+
+  <span class="comment">// bad:</span>
+  <span class="function"><span class="keyword">function</span> <span class="title">stop</span> <span class="params">()</span> {</span>...};
+</code></pre>
+</li>
+</ul>
+<h3 id="semicolons" class="ng-scope">Semicolons</h3>
+<ul class="ng-scope">
+<li><p>Don't forget semicolons at the end of lines</p>
+<pre><code class="lang-javascript"><span class="comment">// good:</span>
+alert(<span class="string">'hi'</span>);
+
+<span class="comment">// bad:</span>
+alert(<span class="string">'hi'</span>)
+</code></pre>
+</li>
+<li><p>Semicolons are not required at the end of statements that include a block--i.e. <code>if</code>, <code>for</code>, <code>while</code>, etc.</p>
+</li>
+</ul>
+<pre class="ng-scope"><code class="lang-javascript">  <span class="comment">// good:</span>
+  <span class="keyword">if</span> (condition) {
+    response();
+  }
+
+  <span class="comment">// bad:</span>
+  <span class="keyword">if</span> (condition) {
+    response();
+  };
+</code></pre>
+<ul class="ng-scope">
+<li><p>Misleadingly, a function may be used at the end of a normal assignment statement, and would require a semicolon (even though it looks rather like the end of some statement block).</p>
+<pre><code class="lang-javascript"><span class="comment">// good:</span>
+<span class="keyword">var</span> greet = <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+  alert(<span class="string">'hi'</span>);
+};
+
+<span class="comment">// bad:</span>
+<span class="keyword">var</span> greet = <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+  alert(<span class="string">'hi'</span>);
+}
+</code></pre>
+</li>
+</ul>
+<h1 id="supplemental-reading" class="ng-scope">Supplemental reading</h1>
+<h3 id="code-density" class="ng-scope">Code density</h3>
+<ul class="ng-scope">
+<li>Conserve line quantity by minimizing the number lines you write in. The more concisely your code is written, the more context can be seen in one screen.</li>
+<li>Conserve line length by minimizing the amount of complexity you put on each line. Long lines are difficult to read. Rather than a character count limit, I recommend limiting the amount of complexity you put on a single line. Try to make it easily read in one glance. This goal is in conflict with the line quantity goal, so you must do your best to balance them.</li>
+</ul>
+<h3 id="comments" class="ng-scope">Comments</h3>
+<ul class="ng-scope">
+<li>Provide comments any time you are confident it will make reading your code easier.</li>
+<li>Be aware that comments come at some cost. They make a file longer and can drift out of sync with the code they annotate.</li>
+<li>Comment on what code is attempting to do, not how it will achieve it.</li>
+<li>A good comment is often less effective than a good variable name.</li>
+</ul>
+<h3 id="padding-additional-whitespace" class="ng-scope">Padding &amp; additional whitespace</h3>
+<ul class="ng-scope">
+<li>Generally, we don't care where you put extra spaces, provided they are not distracting.</li>
+<li><p>You may use it as padding for visual clarity. If you do though, make sure it's balanced on both sides.</p>
+<pre><code class="lang-javascript">  <span class="comment">// optional:</span>
+  alert( <span class="string">"I chose to put visual padding around this string"</span> );
+
+  <span class="comment">// bad:</span>
+  alert( <span class="string">"I only put visual padding on one side of this string"</span>);
+</code></pre>
+</li>
+<li><p>You may use it to align two similar lines, but it is not recommended. This pattern usually leads to unnecessary edits of many lines in your code every time you change a variable name.</p>
+<pre><code class="lang-javascript">  <span class="comment">// discouraged:</span>
+  <span class="keyword">var</span> firstItem  = getFirst ();
+  <span class="keyword">var</span> secondItem = getSecond();
+</code></pre>
+</li>
+<li><p>Put <code>else</code> and <code>else if</code> statements on the same line as the ending curly brace for the preceding <code>if</code> block</p>
+<pre><code class="lang-javascript">  <span class="comment">// good:</span>
+  <span class="keyword">if</span> (condition) {
+    response();
+  } <span class="keyword">else</span> {
+    otherResponse();
+  }
+
+  <span class="comment">// bad:</span>
+  <span class="keyword">if</span> (condition) {
+    response();
+  }
+  <span class="keyword">else</span> {
+    otherResponse();
+  }
+</code></pre>
+</li>
+</ul>
+<h3 id="working-with-files" class="ng-scope">Working with files</h3>
+<ul class="ng-scope">
+<li>Do not end a file with any character other than a newline.</li>
+<li><p>Don't use the -a or -m flags for <code>git commit</code> for the first half of the class, since they conceal what is actually happening (and do slightly different things than most people expect).</p>
+<pre><code class="lang-bash">  <span class="comment"># good:</span>
+  &gt; git add .
+  &gt; git commit
+  [save edits to the commit message file using the text editor that opens]
+
+  <span class="comment"># bad:</span>
+  &gt; git commit <span class="operator">-a</span>
+  [save edits to the commit message file using the text editor that opens]
+
+  <span class="comment"># bad:</span>
+  &gt; git add .
+  &gt; git commit -m <span class="string">"updated algorithm"</span>
+</code></pre>
+</li>
+</ul>
+<h3 id="opening-or-closing-too-many-blocks-at-once" class="ng-scope">Opening or closing too many blocks at once</h3>
+<ul class="ng-scope">
+<li><p>The more blocks you open on a single line, the more your reader needs to remember about the context of what they are reading. Try to resolve your blocks early, and refactor. A good rule is to avoid closing more than two blocks on a single line--three in a pinch.</p>
+<pre><code class="lang-javascript">  <span class="comment">// avoid:</span>
+  _.ajax(url, { success: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+    <span class="comment">// ...</span>
+  }});
+
+  <span class="comment">// prefer:</span>
+  _.ajax(url, {
+    success: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+      <span class="comment">// ...</span>
+    }
+  });
+</code></pre>
+</li>
+</ul>
+<h3 id="variable-declaration" class="ng-scope">Variable declaration</h3>
+<ul class="ng-scope">
+<li>Use a new var statement for each line you declare a variable on.</li>
+<li>Do not break variable declarations onto mutiple lines.</li>
+<li>Use a new line for each variable declaration.</li>
+<li><p>See <a href="http://benalman.com/news/2012/05/multiple-var-statements-javascript/">http://benalman.com/news/2012/05/multiple-var-statements-javascript/</a> for more details</p>
+<pre><code class="lang-javascript">  <span class="comment">// good:</span>
+  <span class="keyword">var</span> ape;
+  <span class="keyword">var</span> bat;
+
+  <span class="comment">// bad:</span>
+  <span class="keyword">var</span> cat,
+      dog
+
+  <span class="comment">// use sparingly:</span>
+  <span class="keyword">var</span> eel, fly;
+</code></pre>
+</li>
+</ul>
+<h3 id="capital-letters-in-variable-names" class="ng-scope">Capital letters in variable names</h3>
+<ul class="ng-scope">
+<li>Some people choose to use capitalization of the first letter in their variable names to indicate that they contain a <a href="https://en.wikipedia.org/wiki/Class_(computer_programming">class</a>). This capitalized variable might contain a function, a prototype, or some other construct that acts as a representative for the whole class.</li>
+<li>Optionally, some people use a capital letter only on functions that are written to be run with the keyword <code>new</code>.</li>
+<li>Do not use all-caps for any variables. Some people use this pattern to indicate an intended "constant" variable, but the language does not offer true constants, only mutable variables.</li>
+</ul>
+<h3 id="minutia" class="ng-scope">Minutia</h3>
+<ul class="ng-scope">
+<li><p>Don't rely on JavaScripts implicit global variables. If you are intending to write to the global scope, export things to <code>window.*</code> explicitly instead.</p>
+<pre><code class="lang-javascript">  <span class="comment">// good:</span>
+  <span class="keyword">var</span> overwriteNumber = <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+    window.exported = Math.random();
+  };
+
+  <span class="comment">// bad:</span>
+  <span class="keyword">var</span> overwriteNumber = <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+    exported = Math.random();
+  };
+</code></pre>
+</li>
+<li><p>For lists, put commas at the end of each newline, not at the beginning of each item in a list</p>
+<pre><code class="lang-javascript">  <span class="comment">// good:</span>
+  <span class="keyword">var</span> animals = [
+    <span class="string">'ape'</span>,
+    <span class="string">'bat'</span>,
+    <span class="string">'cat'</span>
+  ];
+
+  <span class="comment">// bad:</span>
+  <span class="keyword">var</span> animals = [
+      <span class="string">'ape'</span>
+    , <span class="string">'bat'</span>
+    , <span class="string">'cat'</span>
+  ];
+</code></pre>
+</li>
+<li><p>Avoid use of <code>switch</code> statements altogether. They are hard to outdent using the standard whitespace rules above, and are prone to error due to missing <code>break</code> statements.</p>
+</li>
+<li><p>Prefer single quotes around JavaScript strings, rather than double quotes. Having a standard of any sort is preferable to a mix-and-match approach, and single quotes allow for easy embedding of HTML, which prefers double quotes around tag attributes.</p>
+<pre><code class="lang-javascript">  <span class="comment">// good:</span>
+  <span class="keyword">var</span> dog = <span class="string">'dog'</span>;
+  <span class="keyword">var</span> cat = <span class="string">'cat'</span>;
+
+  <span class="comment">// acceptable:</span>
+  <span class="keyword">var</span> dog = <span class="string">"dog"</span>;
+  <span class="keyword">var</span> cat = <span class="string">"cat"</span>;
+
+  <span class="comment">// bad:</span>
+  <span class="keyword">var</span> dog = <span class="string">'dog'</span>;
+  <span class="keyword">var</span> cat = <span class="string">"cat"</span>;
+</code></pre>
+</li>
+</ul>
+<h3 id="html" class="ng-scope">HTML</h3>
+<ul class="ng-scope">
+<li><p>Do not use ids for html elements. Use a class instead.</p>
+<pre><code class="lang-xml">  <span class="comment">&lt;!-- good --&gt;</span>
+  <span class="tag">&lt;<span class="title">img</span> <span class="attribute">class</span>=<span class="value">"lucy"</span> /&gt;</span>
+
+  <span class="comment">&lt;!-- bad --&gt;</span>
+  <span class="tag">&lt;<span class="title">img</span> <span class="attribute">id</span>=<span class="value">"lucy"</span> /&gt;</span>
+</code></pre>
+</li>
+<li><p>Do not include a <code>type=text/javascript"</code> attribute on script tags</p>
+<pre><code class="lang-xml">  <span class="comment">&lt;!-- good --&gt;</span>
+  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"a.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+
+  <span class="comment">&lt;!-- bad --&gt;</span>
+  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"a.js"</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</code></pre>
+</li>
+</ul>
+</markdown>
+</div></div>
+</div>

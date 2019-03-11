@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div class= "col-md-2"></div>
+        <div class="col-md">
+            <h2>{{lecture}}</h2>
+            <iframe ng-if="slide" src={{slide}} frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+            </div>
+    </div>
+    <div class= "row">
+	    <div ng-repeat="solutions in solutionsQuestions | orderBy: 'number'">
+	        <p>{{solutions.number}}.{{solutions.questionText}}</p>
+	        <div ng-if="solutions.solution" hljs hljs-source="solutions.solution" ></div>
+		</div>
+    </div>
+</div>

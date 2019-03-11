@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html ng-app="prep">
+<head>
+  <title>Prep Website</title>
+  <base href="/">
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/style2.css">
+     <!-- link to highlight code syntax style using highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
+    <!-- css link to styling angualr calendar-->
+</head>
+
+<body>
+<div ng-show="authenticated">
+<div ng-controller= "WeeksController" data-spy="affix" data-offset-top="15">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a style="color : white" class="navbar-brand" href="/calendar">RBK</a>
+      </div>
+      <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Week1
+        <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{weekLecture['title']}}" ng-repeat="weekLecture in weeks['one'] | orderBy: ['day','part']">{{weekLecture['day']}}-{{weekLecture['part']}}. {{weekLecture['title']}}</a></li>
+          </ul>
+        </li> 
+
+           <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Week2
+        <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{weekLecture['title']}}" ng-repeat="weekLecture in weeks['two'] | orderBy: ['day','part']">{{weekLecture['day']}}-{{weekLecture['part']}}. {{weekLecture['title']}}</a></li>
+          </ul>
+        </li> 
+
+<!--         <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Week3
+        <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{weekLecture['title']}}" ng-repeat="weekLecture in weeks['three'] | orderBy: ['day','part']">{{weekLecture['day']}}-{{weekLecture['part']}}.{{weekLecture['title']}}</a></li>
+        </ul>
+      </li>  -->
+    
+         <!--  <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Week4
+        <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="webDevlopment">1-1. Web Development</a></li>
+            <li><a href="webDevlopment2">1-2. Web Development 2</a></li>
+            <li><a href="gitexcer">1-3. Git</a></li>
+            <li><a href="twitler">2-1. Twitler</a></li>
+            <li><a href="testing">3-1. Testing</a></li>
+            <li><a href="revision">4-1. Revision</a></li>
+            <li><a href="project">5-1. Project</a></li>
+          </ul>
+        </li>  -->
+         
+
+         <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Challenges
+        <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/challenge"> Challenge 1 </a></li>
+             <!-- <li><a href="/challenge2"> Challenge 2 </a></li>
+            <li><a href="/challenge4"> Challenge 4 </a></li> -->
+          </ul>
+        </li>
+    
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Solutions
+        <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/solutions/{{solution}}" ng-repeat="solution in Solutions">{{solution}}</a></li>
+          </ul>
+        </li> 
+
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Other
+        <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/chromeConsole">Chrome Console</a></li>
+            <li><a href="/sublimeText">Sublime Text</a></li>
+            <!-- <li><a href="/git">Git</a></li>
+            <li><a href="/shell">Shell</a></li> -->
+            <li><a href="/debugging">Debugging</a></li>
+            <!-- <li><a href="/styling&documenting">Styling & Documenting</a></li> -->
+<!--             <li><a href="/stylingguide">Style Guide</a></li> 
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">MDN: JS Documentation</a></li> 
+            <li><a href="/whiteboarding">Whiteboarding</a></li> -->
+          </ul>
+
+        </li> 
+
+        </li>
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Wiki
+        <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/lightning">Lightning Talks</a></li>
+            <!-- <li><a href="/googling">How to Google</a></li> -->
+            <li><a href="/studentWiki">RBK Student Wiki</a></li>
+            <!-- <li><a href="/askingQuestions">Asking Good Questions</a></li> -->
+          </ul>
+        </li> 
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a ng-click="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+</div>
+
+<div ng-view></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- script to highlight code syntax using highlight.js -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-mocks/angular-mocks.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+
+<!-- script for highlighting code with angular -->
+<script src="angular-highlightjs.min.js"></script>
+
+<script src="app/auth/auth.js"></script>
+<script src="app/contents/contents.js"></script>
+<script src="app/weeks/weeks.js"></script>
+<script src="app/calendar/calendar.js"></script>
+<script src="app/solutions/solutions.js"></script>
+<script src="app/services/services.js"></script>
+<script src="app/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<div class="container" style="font-size: 20; margin-left: 30">
+	<strong>1- </strong><br>
+	<h4>What message will eventually be alerted? After how long?</h4>
+	<code style="font-size: 16">
+		var name = "Window";<br>
+		var alice = {<br>
+		name: "Alice",<br>
+		sayHi: function() {<br>
+		alert(this.name + " says hi");<br>
+	}<br>
+};<br>
+var bob = { name: "Bob" };<br>
+<br>
+setTimeout(alice.sayHi.call(bob), 1000);
+</code>
+<h4>Answer Choices:</h4>
+<ol type="A">
+	<li>Window says hi, after 1 second</li>
+	<li>Window says hi, immediately</li>
+	<li>Alice says hi, after 1 second</li>
+	<li>Alice says hi, immediately</li>
+	<li>Bob says hi, after 1 second</li>
+	<li>Bob says hi, immediately</li>
+</ol>
+<hr>
+<strong>2- </strong><br>
+<p>Write a line of code that uses<strong> .call</strong> <i>(from Function.prototype.call)</i> to alert the string "Alice says hello!"</p>
+<code style="font-size: 16">
+	function sayHello () {<br>
+	alert(this.name + " says hello!");<br>
+}<br>
+var alice = { name: "Alice" };<br>
+// ???<br>
+</code>
+<hr>
+<strong>3- </strong><br>
+<p>
+	After running the following code, what will be the value of result?
+</p>
+<code style="font-size: 16">
+	var x = 10;<br>
+	var puzzle = function (amount) {<br>
+	this.x += amount;<br>
+	return this.x;<br>
+};<br>
+<br>
+var result = 50 - puzzle(20);<br>
+</code>
+<hr>
+<strong>4- </strong><br>
+<p>After running the following code, what will be the value of result?</p>
+<code style="font-size: 16">
+	window.name = 'window'<br>
+	<br>
+	var alice = {<br>
+	name: 'Alice',<br>
+	greet: function () {<br>
+	return "Hi I am " + this.name<br>
+}<br>
+}<br>
+<br>
+var bob = {<br>
+name: 'Bob',<br>
+greet: alice.greet<br>
+}<br>
+<br>
+var greet = alice.greet<br>
+var result = greet()<br>
+</code>
+<h4>Answer Choices:</h4>
+<ol type="A">
+	<li>"Hi I am Alice"</li>
+	<li>"Hi I am Bob"</li>
+	<li>"Hi I am window"</li>
+	<li>"Hi I am undefined"</li>
+</ol>
+<hr>
+		<strong>5- </strong><br>
+		<h4>Fill the following survey INDIVIDULLY, you can read the passage (in the survey) in pairs, but make sure you fill the survey individully, we trust that each one will answer on his own</h4>
+		<p><a href="https://goo.gl/forms/6bwBu5idAj76W6co2">HERE</a></P>
+<hr>
+<strong>6- </strong><br>
+<p>After running the following code, what will be the value of result?</p>
+<code style="font-size: 16">
+	var obj1 = { x: 10 };<br>
+	<br>
+	var obj2 = Object.create(obj1);<br>
+	<br>
+	var obj3 = Object.create(obj2);<br>
+	<br>
+	var result = obj3.x + 10;<br>
+</code>
+<h4>Answer Choices:</h4>
+<ol type="A">
+	<li>10</li>
+	<li>20</li>
+	<li>30</li>
+	<li>NaN</li>
+</ol>
+<hr>
+<strong>7- </strong><br>
+<p>What message will eventually be alerted? After how long?</p>
+<code style="font-size: 16">
+	var name = "Window";<br>
+	var alice = {<br>
+	name: "Alice",<br>
+	sayHi: function() {<br>
+	alert(this.name + " says hi");<br>
+}<br>
+};<br>
+var bob = { name: "Bob" };<br>
+<br>
+setTimeout(alice.sayHi.bind(alice), 1000);<br>
+</code>
+<h4>Answer Choices:</h4>
+<ol type="A">
+	<li>Window says hi, after 1 second</li>
+	<li>Window says hi, immediately</li>
+	<li>Alice says hi, after 1 second</li>
+	<li>Alice says hi, immediately</li>
+	<li>Window says hi, after 1 second</li>
+	<li>Bob says hi, immediately</li>
+</ol>
+<hr>
+<strong>8- </strong><br>
+<p>Which of the following are reasons why we might reuse code?</p>
+<h4>Answer Choices:</h4>
+<ol type="A">
+	<li>modularize our code for reuse and composition</li>
+	<li>centralize code to simplify maintenance</li>
+	<li>reduce errors and repetition</li>
+	<li>DRY - don't repeat yourself (developer efficacy)</li>
+</ol>
+<br>
+</div>

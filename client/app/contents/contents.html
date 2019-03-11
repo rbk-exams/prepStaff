@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <div class= "col-md-2"></div>
+        <div class="col-md">
+           <!--  <h2>Week: {{week}} Day: {{day}}</h2> -->
+            <h2>{{title}}</h2>
+            <p>{{subTitle}}</p>
+            <iframe ng-src="{{slide.src[0]}}" frameborder="0" width="960" height="569" 
+            allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+            <iframe ng-if="slide.src[1]" ng-src="{{slide.src[1]}}" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+            </div>
+    </div>
+    <div class= "row">
+        <div class= "col-md-2"></div>
+        <div class="col-md">
+            <h1 style="color:black">Exercises</h1>
+            <h3 ng-if='BasicRequirments'><u>Basic Requirments</u></h3>
+            <div ng-repeat="basicReq in questions | filter: {'type': 'Basic Requirements'} | orderBy: 'number'">
+                <p>{{basicReq.number}}.{{basicReq.questionText}}</p>
+                <!--using hljs directive to show highlight code syntax-->
+                <div hljs ng-if='basicReq.example' hljs-source="basicReq.example" ></div>
+                <pre ng-if='basicReq.postQuestion'>{{basicReq.postQuestion}}</pre>
+                <img ng-if="basicReq.image" src="{{basicReq.image}}" />
+            </div>
+            <h3 ng-if= "MorePractice"><u>More Practice</u></h3>
+            <div ng-repeat="morePrac in questions | filter: {'type' : 'More Practice'} | orderBy: 'number'">
+                <p>{{morePrac.number}}.{{morePrac.questionText}}</p>
+                <div hljs ng-if='morePrac.example' hljs-source="morePrac.example" ></div>
+                <pre ng-if='morePrac.postQuestion'>{{morePrac.postQuestion}}</pre>
+                <img ng-if="morePrac.image" src="{{morePrac.image}}" />
+            </div>
+            <h3 ng-if= "Advanced"><u>Advanced</u></h3>
+            <div ng-repeat="advanced in questions | filter: {'type' : 'Advanced'} | orderBy: 'number'">
+                <p>{{advanced.number}}.{{advanced.questionText}}</p>
+                <div hljs ng-if='advanced.example' hljs-source="advanced.example" ></div>
+                <img ng-if="advanced.image" src="{{advanced.image}}" />
+                <pre ng-if='advanced.postQuestion'>{{advanced.postQuestion}}</pre>
+            </div>
+            <h3 ng-if= "NightmareMode"><u>Nightmare Mode(optional, only if you have finished the above)</u></h3>
+            <div ng-repeat="NightmareMode in questions | filter: {'type' : 'Nightmare Mode'} | orderBy: 'number'">
+                <p>{{NightmareMode.number}}.{{NightmareMode.questionText}}</p>
+                <div hljs ng-if='NightmareMode.example' hljs-source="NightmareMode.example" ></div>
+                <img ng-if="NightmareMode.image" src="{{NightmareMode.image}}" />
+                <pre ng-if='NightmareMode.postQuestion'>{{NightmareMode.postQuestion}}</pre>
+            </div>
+        </div>
+    </div>
+</div>
